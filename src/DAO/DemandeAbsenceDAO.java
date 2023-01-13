@@ -26,7 +26,7 @@ public class DemandeAbsenceDAO extends Dao<DemandeAbsence, Integer> {
     @Override
     public void supprimer(Integer id) {
         try {
-            PreparedStatement prepare = this.connect.prepareStatement("delete from demandeAbsence where idDemandeAbsence = ?");
+            PreparedStatement prepare = this.connect.prepareStatement("delete from demandeabsence where idDemandeAbsence = ?");
             prepare.setInt(1, id);
             prepare.executeUpdate();
         } catch (SQLException ex) {
@@ -37,7 +37,7 @@ public class DemandeAbsenceDAO extends Dao<DemandeAbsence, Integer> {
     @Override
     public void inserer(DemandeAbsence object) {
         try {
-            PreparedStatement prepare = this.connect.prepareStatement("insert into demandeAbsence(motif,statut,idEmploye) values(?,?,?)");
+            PreparedStatement prepare = this.connect.prepareStatement("insert into demandeabsence(motif,statut,idEmploye) values(?,?,?)");
               prepare.setString(1, object.getMotif());
               prepare.setString(2, object.getStatut());
               prepare.setInt(3, object.getIdEmploye());
@@ -51,7 +51,7 @@ public class DemandeAbsenceDAO extends Dao<DemandeAbsence, Integer> {
     @Override
     public DemandeAbsence rechercher(Integer id) {
         try {
-            PreparedStatement prepare = this.connect.prepareStatement("select * from demandeAbsence where idDemandeAbsence=?");
+            PreparedStatement prepare = this.connect.prepareStatement("select * from demandeabsence where idDemandeAbsence=?");
             prepare.setInt(1, id);
             ResultSet rs = prepare.executeQuery();
             if(rs.next()){
@@ -72,7 +72,7 @@ public class DemandeAbsenceDAO extends Dao<DemandeAbsence, Integer> {
     @Override
     public void modifier(DemandeAbsence objet, Integer id) {
          try {
-            PreparedStatement prepare = this.connect.prepareStatement("update demandeAbsence set motif=?,statut=?,idEmploye=? where idDemandeAbsence=?");
+            PreparedStatement prepare = this.connect.prepareStatement("update demandeabsence set motif=?,statut=?,idEmploye=? where idDemandeAbsence=?");
             prepare.setString(1, objet.getMotif());
               prepare.setString(2, objet.getStatut());
               prepare.setInt(3, objet.getIdEmploye());
@@ -85,7 +85,7 @@ public class DemandeAbsenceDAO extends Dao<DemandeAbsence, Integer> {
 
     public void modifierAccepter(Date debut,Date fin,String statut, Integer id) {
          try {
-            PreparedStatement prepare = this.connect.prepareStatement("update demandeAbsence set dateDebut=? , dateFin=?, statut=? where idDemandeAbsence=?");
+            PreparedStatement prepare = this.connect.prepareStatement("update demandeabsence set dateDebut=? , dateFin=?, statut=? where idDemandeAbsence=?");
             prepare.setString(1, amj.format(debut));
               prepare.setString(2, amj.format(fin));
               prepare.setString(3, statut);
@@ -99,7 +99,7 @@ public class DemandeAbsenceDAO extends Dao<DemandeAbsence, Integer> {
     public List<DemandeAbsence> liste() {
         List<DemandeAbsence> li = new ArrayList<>();
         try {
-            ResultSet rs = this.connect.createStatement().executeQuery("select * from demandeAbsence");
+            ResultSet rs = this.connect.createStatement().executeQuery("select * from demandeabsence");
             
             while(rs.next()){
                 demande.setDateCreation(rs.getDate("dateCreation"));

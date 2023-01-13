@@ -259,6 +259,7 @@ public class PanelUtilisateur extends javax.swing.JPanel {
         modifier=false;
         txtLogin.setText("");
         txtPassword.setText("");
+        txtEmploye.setEnabled(true);
     }//GEN-LAST:event_btnAjouter1MouseClicked
 
     private void btnModifier1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifier1MouseClicked

@@ -11,11 +11,14 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import menu.MenuButton;
 import menu.MenuTitre;
+import panel.PanelAvisRecrutement;
 import panel.PanelCandidat;
 import panel.PanelConge;
 import panel.PanelDepartement;
 import panel.PanelEmploye;
+import panel.PanelEntretient;
 import panel.PanelEquipe;
+import panel.PanelHistorique;
 import panel.PanelUtilisateur;
 import panel.PanelHome;
 import panel.PanelProjet;
@@ -32,7 +35,7 @@ public class FrameAccueil extends javax.swing.JFrame {
     public FrameAccueil() {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
-        this.setExtendedState(MAXIMIZED_BOTH);
+        //this.setExtendedState(MAXIMIZED_BOTH);
         execute();
         accueil();
     }
@@ -53,6 +56,9 @@ public void accueil(){
         ImageIcon iconProjet=new ImageIcon(getClass().getResource("/menu/projet.png"));
         ImageIcon iconDemande=new ImageIcon(getClass().getResource("/menu/demande.png"));
         ImageIcon iconCongé=new ImageIcon(getClass().getResource("/menu/congé.png"));
+        ImageIcon iconAvis=new ImageIcon(getClass().getResource("/menu/avis.png"));
+        ImageIcon iconEntretient=new ImageIcon(getClass().getResource("/menu/entretient.png"));
+        ImageIcon iconHistorique=new ImageIcon(getClass().getResource("/menu/historique.png"));
         
         MenuButton menuAccueil = new MenuButton(iconAccueil, "Accueil", new ActionListener() {
             @Override
@@ -130,16 +136,49 @@ public void accueil(){
                 panelAccueil.revalidate();
             }
         });
+        MenuButton menuAvis = new MenuButton(iconAvis, "Avis Recrutement", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                PanelAvisRecrutement p=new PanelAvisRecrutement();
+                panelAccueil.removeAll();
+                panelAccueil.add(p );
+                panelAccueil.repaint();
+                panelAccueil.revalidate();
+            }
+        });
+        MenuButton menuEntretient = new MenuButton(iconEntretient, "Entretient", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                PanelEntretient p=new PanelEntretient();
+                panelAccueil.removeAll();
+                panelAccueil.add(p );
+                panelAccueil.repaint();
+                panelAccueil.revalidate();
+            }
+        });
+        MenuButton menuHistorique = new MenuButton(iconHistorique, "Historique", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                PanelHistorique p=new PanelHistorique();
+                panelAccueil.removeAll();
+                panelAccueil.add(p );
+                panelAccueil.repaint();
+                panelAccueil.revalidate();
+            }
+        });
        
         
          MenuTitre main=new MenuTitre("HOME PRINCIPAL");
          MenuTitre donné=new MenuTitre("GESTION DU PERSONNEL");
-         MenuTitre autre=new MenuTitre("MENU REQUETE");
+         MenuTitre autre=new MenuTitre("RECRUTEMENT");
          
         addMenutitre(main);addMenu(menuAccueil);
+        
+        addMenutitre(autre);addMenu(menuAvis,menuCandidature,menuEntretient,menuHistorique);
+        
         addMenutitre(donné);addMenu(menuUtilisateur,menuDepartement);
-        addMenu(menuEquipe,menuEmployé,menuProjet);
-        addMenutitre(autre);addMenu(menuCandidature,menuCongé);
+        addMenu(menuEquipe,menuEmployé,menuProjet,menuCongé);
+        
        //addMenu(menuAccueil,menuUtilisateur,menuDepartement,menuEmployé,menuProjet,menuCandidature,menuCongé,menuDeconnect);
         menuAccueil.select();
 menuUtilisateur.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,6 +190,9 @@ menuUtilisateur.addMouseListener(new java.awt.event.MouseAdapter() {
                 menuCongé.deselect();
                 menuProjet.deselect();
                 menuAccueil.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
             }
         });
 menuDepartement.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,6 +204,9 @@ menuDepartement.addMouseListener(new java.awt.event.MouseAdapter() {
                 menuCongé.deselect();
                 menuProjet.deselect();
                 menuAccueil.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
             }
         });
 menuEmployé.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -173,6 +218,9 @@ menuEmployé.addMouseListener(new java.awt.event.MouseAdapter() {
                 menuCongé.deselect();
                 menuProjet.deselect();
                 menuAccueil.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
             }
         });
 menuCandidature.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -184,6 +232,9 @@ menuCandidature.addMouseListener(new java.awt.event.MouseAdapter() {
                 menuCongé.deselect();
                 menuProjet.deselect();
                 menuAccueil.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
             }
         });
 menuCongé.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -195,6 +246,9 @@ menuCongé.addMouseListener(new java.awt.event.MouseAdapter() {
                 menuCandidature.deselect();
                 menuProjet.deselect();
                 menuAccueil.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
             }
         });
 menuProjet.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,6 +260,9 @@ menuProjet.addMouseListener(new java.awt.event.MouseAdapter() {
                 menuCandidature.deselect();
                 menuCongé.deselect();
                 menuAccueil.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
             }
         });
 menuEquipe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,6 +274,9 @@ menuEquipe.addMouseListener(new java.awt.event.MouseAdapter() {
                 menuCandidature.deselect();
                 menuCongé.deselect();
                 menuAccueil.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
             }
         });
 menuAccueil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,6 +288,51 @@ menuAccueil.addMouseListener(new java.awt.event.MouseAdapter() {
                 menuCandidature.deselect();
                 menuCongé.deselect();
                 menuEquipe.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
+            }
+        });
+menuAvis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+               menuUtilisateur.deselect();
+                menuDepartement.deselect();
+                menuProjet.deselect();
+                menuEmployé.deselect();
+                menuCandidature.deselect();
+                menuCongé.deselect();
+                menuEquipe.deselect();
+                menuAccueil.deselect();
+                menuEntretient.deselect();
+                menuHistorique.deselect();
+            }
+        });
+menuEntretient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+               menuUtilisateur.deselect();
+                menuDepartement.deselect();
+                menuProjet.deselect();
+                menuEmployé.deselect();
+                menuCandidature.deselect();
+                menuCongé.deselect();
+                menuEquipe.deselect();
+                menuAvis.deselect();
+                menuAccueil.deselect();
+                menuHistorique.deselect();
+            }
+        });
+menuHistorique.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+               menuUtilisateur.deselect();
+                menuDepartement.deselect();
+                menuProjet.deselect();
+                menuEmployé.deselect();
+                menuCandidature.deselect();
+                menuCongé.deselect();
+                menuEquipe.deselect();
+                menuAvis.deselect();
+                menuEntretient.deselect();
+                menuAccueil.deselect();
             }
         });
 

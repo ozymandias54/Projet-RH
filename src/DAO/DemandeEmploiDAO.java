@@ -23,7 +23,7 @@ public class DemandeEmploiDAO extends Dao<DemandeEmploi,Integer>{
     @Override
     public void supprimer(Integer id) {
         try {
-            PreparedStatement prepare = this.connect.prepareStatement("delete from demandeEmploye where idDemandeEmploye = ?");
+            PreparedStatement prepare = this.connect.prepareStatement("delete from demandeemploye where idDemandeEmploye = ?");
             prepare.setInt(1, id);
             prepare.executeUpdate();
         } catch (SQLException ex) {
@@ -34,7 +34,7 @@ public class DemandeEmploiDAO extends Dao<DemandeEmploi,Integer>{
     @Override
     public void inserer(DemandeEmploi object) {
         try {
-            PreparedStatement prepare = this.connect.prepareStatement("insert into demandeEmploye(employeDemande,statut,idCandidat) values(?,?,?)");
+            PreparedStatement prepare = this.connect.prepareStatement("insert into demandeemploye(employeDemande,statut,idCandidat) values(?,?,?)");
             prepare.setString(1, object.getEmploiDemande());
             prepare.setString(2, object.getStatut());
             prepare.setInt(3, object.getIdCandidat());
@@ -48,7 +48,7 @@ public class DemandeEmploiDAO extends Dao<DemandeEmploi,Integer>{
     @Override
     public DemandeEmploi rechercher(Integer id) {
         try {
-            PreparedStatement prepare = this.connect.prepareStatement("select * from demandeEmploye where idDemandeEmploye=?");
+            PreparedStatement prepare = this.connect.prepareStatement("select * from demandeemploye where idDemandeEmploye=?");
              prepare.setInt(1, id);
            ResultSet rs =  prepare.executeQuery();
            if(rs.next()){
@@ -67,7 +67,7 @@ public class DemandeEmploiDAO extends Dao<DemandeEmploi,Integer>{
     @Override
     public void modifier(DemandeEmploi objet, Integer id) {
         try {
-            PreparedStatement prepare = this.connect.prepareStatement("update demandeEmploye set employeDemande=?,statut=?,idCandidat=? where idDemandeEmploye=?");
+            PreparedStatement prepare = this.connect.prepareStatement("update demandeemploye set employeDemande=?,statut=?,idCandidat=? where idDemandeEmploye=?");
             prepare.setString(1, objet.getEmploiDemande());
             prepare.setString(2, objet.getStatut());
             prepare.setInt(3, objet.getIdCandidat());
@@ -83,7 +83,7 @@ public class DemandeEmploiDAO extends Dao<DemandeEmploi,Integer>{
     public List<DemandeEmploi> liste() {
         List<DemandeEmploi> li = new ArrayList<>();
         try {
-            ResultSet rs = this.connect.createStatement().executeQuery("select * from demandeEmploye");
+            ResultSet rs = this.connect.createStatement().executeQuery("select * from demandeemploye");
            while(rs.next()){
                demande.setEmploiDemande(rs.getString("employeDemande"));
                demande.setIdCandidat(rs.getInt("idCandidat"));
